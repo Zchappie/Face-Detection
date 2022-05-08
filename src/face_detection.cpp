@@ -3,6 +3,7 @@
 #include <opencv2/highgui.hpp>
 
 #include "detector.h"
+#include "draw.h"
 
 int main()
 {
@@ -32,6 +33,7 @@ int main()
 		// detect face
 		std::vector<cv::Rect> faces = detector.FindFaceLocation(flipped);
 		std::cout << "Found number of faces: " << faces.size() << std::endl;
+		Draw::DrawRectsOnFrame(flipped, faces);
 		
 		// display the result
 		imshow("Face Detector, FPS: " + std::to_string((int) fps), flipped);
