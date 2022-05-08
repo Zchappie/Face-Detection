@@ -12,6 +12,7 @@ class Draw
 {
 	public:
 	static void DrawRectsOnFrame(cv::Mat &frame, std::vector<cv::Rect> &shapes);
+	static void PutTextOnFrame(cv::Mat &frame, std::string &s);
 	
 };
 
