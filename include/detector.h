@@ -16,7 +16,9 @@ class Detector
 {
 	public:
 	Detector();
-	cv::Rect FindFaceLocation(cv::Mat &frame);
+	~Detector();
+	
+	std::vector<cv::Rect> FindFaceLocation(cv::Mat &frame);
 	
 	private:
 	std::string FindFaceCascade();
@@ -26,6 +28,7 @@ class Detector
 	
 	cv::CascadeClassifier _face_cascade;
 	cv::CascadeClassifier _eye_cascade;
+	std::vector<cv::Rect> _faces_rect;
 	std::string _data_dir_path = "../data/";
 	std::string _face_cascade_file = "haarcascade_frontalface_alt.xml";
 	std::string _eye_cascade_file = "haarcascade_eye_tree_eyeglasses.xml";

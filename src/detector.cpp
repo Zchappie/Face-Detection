@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <vector>
 #include "detector.h"
 
 Detector::Detector()
@@ -10,9 +11,19 @@ Detector::Detector()
 	this->LoadFaceCascade();
 }
 
-cv::Rect Detector::FindFaceLocation(cv::Mat &frame)
+Detector::~Detector()
+= default;
+
+std::vector<cv::Rect> Detector::FindFaceLocation(cv::Mat &frame)
 {
-	return cv::Rect();
+	// preprocessing
+	cv::Mat frame_gray;
+	cv::cvtColor(frame, frame_gray, cv::COLOR_RGB2GRAY);
+	cv::equalizeHist(frame_gray, frame_gray);
+	
+	// detect faces
+	_face_cascade.detectMultiScale(frame_gray, _faces_rect);
+	return _faces_rect;
 }
 
 std::string Detector::FindFaceCascade()
@@ -29,13 +40,16 @@ void Detector::LoadFaceCascade()
 	}
 }
 
+// TODO
 std::string Detector::FindEyeCascade()
 {
 	return std::string();
 }
 
+// TODO
 void Detector::LoadEyeCascade()
 {
 
 }
+
 
