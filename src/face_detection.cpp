@@ -1,4 +1,5 @@
 #include <iostream>
+#include <memory>
 #include <opencv2/core.hpp>
 #include <opencv2/highgui.hpp>
 
@@ -31,6 +32,7 @@ int main()
 		cv::flip(frame, flipped, 1);
 		
 		// detect face and draw on the frame
+		std::shared_ptr<cv::Mat> frame_ptr = std::make_shared<cv::Mat>(flipped);
 		std::vector<cv::Rect> faces = detector.FindFaceLocation(flipped);
 		std::cout << "Found number of faces: " << faces.size() << std::endl;
 		Draw::DrawRectsOnFrame(flipped, faces);
