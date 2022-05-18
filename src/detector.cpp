@@ -38,7 +38,9 @@ void Detector::LoadFaceCascade()
 {
 	if (!_face_cascade.load(FindFaceCascade()))
 	{
-		std::cout << "--(!)Error loading face cascade\n";
+		std::ostringstream ss;
+		ss << "--(!)Error loading face cascade! \n";
+		throw std::invalid_argument(ss.str());
 	}
 }
 
