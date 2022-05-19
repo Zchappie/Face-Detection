@@ -6,11 +6,16 @@
 #include "detector.h"
 #include "draw.h"
 
-int main()
+int main(int argc, char *argv[])
 {
 	cv::namedWindow("Face Detector");
 	cv::VideoCapture cap(0);
 	Detector detector;
+	if (argc > 1)
+	{
+		std::string method(argv[1]);
+		detector.setMethod(method);
+	}
 	
 	if (!cap.isOpened())
 	{
@@ -34,9 +39,8 @@ int main()
 		// detect face and draw on the frame
 		std::shared_ptr<cv::Mat> frame_ptr = std::make_shared<cv::Mat>(flipped);
 		std::vector<cv::Rect> faces = detector.FindFaceLocation(flipped);
-		std::cout << "Found number of faces: " << faces.size() << std::endl;
 		Draw::DrawRectsOnFrame(flipped, faces);
-		std::string text = "Number of face detected: " + std::to_string(faces.size());
+		std::string text = "Number of face detected: " + std::to_string(faces.size()) + " using " + detector.getMethod();
 		Draw::PutTextOnFrame(flipped, text);
 		
 		// display the result

@@ -18,13 +18,16 @@
 class Detector
 {
 	public:
+	explicit Detector(std::string method);
 	Detector();
 	~Detector();
 	
 	std::vector<cv::Rect> FindFaceLocation(cv::Mat &frame);
+	void setMethod(std::string method);
+	std::string getMethod();
 	
 	private:
-	int _method = 1;
+	std::string _method;
 	std::vector<cv::Rect> _faces_rect;
 	
 	// haar cascade method

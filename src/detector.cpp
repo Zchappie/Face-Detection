@@ -3,11 +3,19 @@
 //
 
 #include <iostream>
+#include <utility>
 #include <vector>
 #include <opencv2/opencv.hpp>
 #include "detector.h"
 
 Detector::Detector()
+{
+	this->LoadFaceCascade();
+	this->LoadDNNModel();
+	this->_method = "dnn";
+}
+
+Detector::Detector(std::string method) : _method(std::move(method))
 {
 	this->LoadFaceCascade();
 	this->LoadDNNModel();
@@ -18,14 +26,27 @@ Detector::~Detector()
 
 std::vector<cv::Rect> Detector::FindFaceLocation(cv::Mat &frame)
 {
-	if (_method == 1)
+	if (_method == "dnn")
 	{
 		FindFaceLocationUseDNNDetector(frame);
-	} else
+	} else if (_method == "haar")
 	{
 		FindFaceLocationUseHaarDetector(frame);
+	} else
+	{
+		throw std::invalid_argument("--(!)Unknown method!\n");
 	}
 	return _faces_rect;
+}
+
+void Detector::setMethod(std::string method)
+{
+	_method = std::move(method);
+}
+
+std::string Detector::getMethod()
+{
+	return _method;
 }
 
 std::string Detector::FindFaceCascade()
@@ -83,6 +104,8 @@ void Detector::FindFaceLocationUseDNNDetector(cv::Mat &frame)
 		{
 			continue;
 		}
+		
+		// resize back to real image dimension
 		int x_left_bottom = static_cast<int>(detection_matrix.at<float>(i, 3) * frame.cols);
 		int y_left_bottom = static_cast<int>(detection_matrix.at<float>(i, 4) * frame.rows);
 		int x_right_top = static_cast<int>(detection_matrix.at<float>(i, 5) * frame.cols);
@@ -92,6 +115,7 @@ void Detector::FindFaceLocationUseDNNDetector(cv::Mat &frame)
 	}
 	_faces_rect = faces;
 }
+
 
 
 
