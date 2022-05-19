@@ -18,5 +18,5 @@ void Draw::DrawRectsOnFrame(cv::Mat &frame, std::vector<cv::Rect> &shapes)
 
 void Draw::PutTextOnFrame(cv::Mat &frame, std::string &s)
 {
-	cv::putText(frame, s, cv::Point(10, 50), cv::FONT_HERSHEY_COMPLEX_SMALL, 1, cv::Scalar(0, 0, 0), 1);
+	cv::putText(frame, s, cv::Point(10, 50), cv::FONT_HERSHEY_COMPLEX_SMALL, 1, cv::Scalar(255, 255, 255), 1);
 }

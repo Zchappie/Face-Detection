@@ -1,8 +1,13 @@
 # Face-Detection
 
-This project use OpenCV to detect human faces in real-time.  
+This project use OpenCV to detect human faces in real-time.
 
-## Rubric 
+Two options available:
+
+![Using dnn](data/dnn.gif)
+![Using dnn](data/haar.gif)
+
+## Rubric
 
 The project bellows to the first option of the capstone project.
 
