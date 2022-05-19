@@ -7,6 +7,12 @@ Two options available:
 ![Using dnn](data/dnn.gif)
 ![Using dnn](data/haar.gif)
 
+## Running options
+
+`dnn` or `haar` are the two methods that can be used to detect faces. They are passed as command line arguments.
+
+Namely, `./face_detection dnn` or `./face_detection haar`.
+
 ## Rubric
 
 The project bellows to the first option of the capstone project.
