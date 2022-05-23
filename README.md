@@ -16,6 +16,31 @@ Two options available:
 5. `dnn` or `haar` are the two methods that can be used to detect faces. They are passed as command line arguments.
    Namely, `./face_detection dnn` or `./face_detection haar`. Default option is `dnn` if you don't specify which method to use.
 
+## Verify the folders and files
+
+Here lists the full project files that are important to compile and run the project.
+
+```shell
+.
+├── CMakeLists.txt
+├── LICENSE
+├── README.md
+├── data
+│   ├── deploy.prototxt
+│   ├── dnn.gif
+│   ├── haar.gif
+│   ├── haarcascade_eye_tree_eyeglasses.xml
+│   ├── haarcascade_frontalface_alt.xml
+│   └── res10_300x300_ssd_iter_140000_fp16.caffemodel
+├── include
+│   ├── detector.h
+│   └── draw.h
+└── src
+    ├── detector.cpp
+    ├── draw.cpp
+    └── face_detection.cpp
+```
+
 ## Rubric
 
 The project bellows to the first option of the capstone project.
