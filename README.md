@@ -41,6 +41,21 @@ Here lists the full project files that are important to compile and run the proj
     └── face_detection.cpp
 ```
 
+## Install OpenCV on M1 Mac
+
+If you have dependency issues, here is the instructions on how to do install OpenCV in a M1 machine.
+
+Credits: [Open CV C++ Mac M1 Installation Tutorial Video](https://www.youtube.com/watch?v=KaTA-yK7dWA&ab_channel=GlebMaksimov)
+
+1. From terminal install `cmake` using homebrew: `brew install cmake`
+2. Clone, build, install OpenCV in a new folder *OPEN_CV*
+    - `git clone https://github.com/opencv/opencv.git`
+    - `mkdir build` in the folder *OPEN_CV*
+    - `cmake ../opencv/ .`
+    - `arch -arm64 cmake ../opencv/ -DWITH_QT=OFF -DWITH_OPENGL=OFF -DFORCE_VTK=OFF -DWITH_TBB=OFF -DWITH_GDAL=OFF -DWITH_XINE=OFF -DBUILD_EXAMPLES=OFF -DBUILD_ZLIB=OFF -DBUILD_TESTS=OFF .`
+    - `arch -arm64 sudo make -j 4`
+    - `arch -arm64 sudo make install`
+
 ## Rubric
 
 The project bellows to the first option of the capstone project.
