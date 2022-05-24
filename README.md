@@ -56,6 +56,10 @@ Credits: [Open CV C++ Mac M1 Installation Tutorial Video](https://www.youtube.co
     - `arch -arm64 sudo make -j 4`
     - `arch -arm64 sudo make install`
 
+## Additional Notes if you are using Linux
+
+Make sure you have `libgtk2.0-dev` and `pkg-config` installed, then re-run cmake.
+
 ## Rubric
 
 The project bellows to the first option of the capstone project.
